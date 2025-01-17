@@ -1,6 +1,6 @@
-# My Vite Project
+# Book Heaven
 
-Welcome to **My Vite Project**! This project is built using [Vite](https://vitejs.dev/), a fast and modern build tool for web development. This project is a part of my learning journey or a real-world application (feel free to modify this description based on your project's nature).
+Welcome to **Book Heaven **! This project is built using [Vite](https://vitejs.dev/), a fast and modern build tool for web development. This project is a part of my learning journey or a real-world application.
 
 ## Features
 
