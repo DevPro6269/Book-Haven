@@ -32,44 +32,36 @@ function handleInput(e){
 
 function handleSubmit(e){
 e.preventDefault()
+let error = {}
 if(!form.title){
-    SetErrors((prev)=>(
-        {...prev,title:"Please Enter a correct title"}
-    ))
+    error.title="Please Enter a correct Title"
 }
+
 if(!form.Author){
-    SetErrors((prev)=>(
-        {...prev,Author:"Please Enter a correct information"}
-    ))
+        error.Author="Please Enter a correct information"
 }
 if(!form.Description){
-    SetErrors((prev)=>(
-        {...prev,Description:"Please Enter a correct Description"}
-    ))
+   
+        error.Description="Please Enter a correct Description"
+    
 }
 if(!form.imageLink){
-    SetErrors((prev)=>(
-        {...prev,imageLink:"Please Enter a correct Url"}
-    ))
+        error.imageLink="Please Enter a correct Url"
 }
 
 if(!form.Category){
-    SetErrors((prev)=>(
-        {...prev,Category:"Please Select correct Category"}
-    ))
+        error.Category="Please Select correct Category"
 }
 
 if(!form.Year){
-    SetErrors((prev)=>(
-        {...prev,Year:"Please Enter a  valid year"}
-    ))
+        error.Year="Please Enter a  valid year"
 }
 
-// if(Object.keys(errors).length>0){
-//     console.log("error");
-    
-//     return ;
-// }
+if(Object.keys(error).length>0){
+    SetErrors(error)
+    console.log("error");
+    return ;
+}
 
 dispatch(addbook({
     title: form.title,

@@ -5,23 +5,25 @@ import Card from '../Card/Card'
 import SearchBar from './SearchBar'
 
 const Browsebooks = () => {
-  const {category}= useParams()
-  const books = useSelector((state)=>state[category])
+  const {category}= useParams();
+
+  const books = useSelector((state)=>state[category])||[]
   const[filterdbook,setFilterbook]=useState(books)
   const[value,setValue]=useState("")
-  
+  const[found ,setfound]=useState(false)
+
+
   useEffect(()=>(
-    setFilterbook(books)
-  ),[books])
+    setFilterbook(books),
+    setfound(false)
+  ),[books,value])
 
 
   function handleClick(){
-  const filterdbook = books.filter((e)=>e.title.toLowerCase()==value.toLocaleLowerCase()||e.author.toLowerCase()==value.toLowerCase())
-  if(filterdbook.length>0){
-    setFilterbook(filterdbook)
-  }else{
-    setFilterbook(books)
-  }
+   let n =  value.trim().toLocaleLowerCase()
+  const filterdbook = books.filter((e)=>e.title.toLowerCase()==n.toLocaleLowerCase()||e.author.toLowerCase()==n.toLowerCase())
+  setFilterbook(filterdbook.length>0?filterdbook:books)
+  setfound(filterdbook.length>0?false:true)
 }
 
 
@@ -29,10 +31,10 @@ const Browsebooks = () => {
   return (
     <> <br />
     
-    <SearchBar  handleInput={(val)=>{setValue(val)}} handleClick={()=>{handleClick()}} value={value} />
+    <SearchBar   msg={found} handleInput={(val)=>{setValue(val)}} handleClick={()=>{handleClick()}} value={value} />
     
      <br />
-     <h1 className='text-3xl font-semibold text-green-700 text-center'>{`popular ${category} Books`}</h1>
+     <h1 className='text-3xl font-semibold text-green-700 text-center'>{books.length>0?`popular ${category} Books`:"Books not found"}  </h1>
      <div className='p-2 bg-slate-500 w-10/12 ml-28 mt-2'></div>
      <br />
      <section className='container  flex flex-wrap gap-5 ml-28'>

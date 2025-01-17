@@ -9,7 +9,7 @@ export const Navbar = () => {
 
     <>
      <div className='p-3 bg-black flex justify-between sticky top-0'>
-        <div></div>
+        <div><a href="https://github.com/DevPro6269/Book-Haven" className='text-white'>GitHub-Link</a></div>
         <ul className='flex list-none text-white gap-5'>
          <NavLink to={"/"}>
           <li><i className="fa-solid fa-house" style={{color:"e4ebf7"}}>&nbsp;</i>Home</li>
